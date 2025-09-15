@@ -1,10 +1,23 @@
 //Создание списка на Java
-ArrayList<String> list = new ArrayList<>();
-list.add("Кошка");
-list.add("Собака");
+import java.util.ArrayList;
+public class SimpleList {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(5);
+        numbers.add(2);
+        numbers.add(9);
+
+        System.out.println(numbers);
+    }
+}
 
 //Создание stack на Java
-MyStack<Integer> stack = new MyStack<>(10).
-stack.push(10);
-stack.push(20);
-stack.push(30);
+import java.util.ArrayList;
+public class SimpleList {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(5);
+        stack.push(2);
+        stack.push(9);
+    }
+}
