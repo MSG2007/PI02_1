@@ -135,3 +135,46 @@ sorted_array = bead_sort(array)
 print("Отсортированный массив:", sorted_array)
 
 Отсортированный массив: [11, 9, 8, 6, 5, 2, 1, 1, 1]
+
+АЛГОРИТМ ПОИСКА СКАЧКАМИ
+import math
+
+def jump_search(arr, target):
+    """
+    Реализация алгоритма поиска скачками (jump search).
+    Параметры:
+    - arr: Отсортированный массив, в котором нужно произвести поиск.
+    - target: Целевое значение, которое мы ищем.
+    Возвращает индекс элемента, если он найден, иначе -1.
+    """
+    n = len(arr)                      # Длина массива
+    step = int(math.sqrt(n))          # Величина скачка (примерно квадратный корень из длины массива)
+
+    prev = 0                           # Индекс начала текущего блока
+    next_block_start = step            # Индекс начала следующего блока
+
+    # Ищем блок, в котором может находиться искомый элемент
+    while next_block_start < n and arr[next_block_start] <= target:
+        prev = next_block_start        # Переходим к началу следующего блока
+        next_block_start += step       # Пересчитываем индекс начала следующего блока
+
+    # Линенрый поиск в найденном блоке
+    for i in range(prev, min(next_block_start, n)):
+        if arr[i] == target:
+            return i                   # Вернули индекс найденного элемента
+
+    # Если элемент не найден, возвращаем -1
+    return -1
+
+# Пример использования
+array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+target_value = 13
+
+result = jump_search(array, target_value)
+
+if result != -1:
+    print(f"Элемент {target_value} найден на индексе {result}.")
+else:
+    print(f"Элемент {target_value} не найден.")
+
+Элемент 13 найден на индексе 6.
