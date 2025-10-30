@@ -96,3 +96,42 @@ print("Отсортированный массив:", sorted_array)
 
 Отсортированный массив: [1, 2, 3, 4, 5, 6, 7]
 
+АЛГОРИТМ СОРТИРОВКИ БУСИНАМИ
+def bead_sort(arr):
+    """
+    Реализация алгоритма сортировки бусинами (bead sort).
+    Параметр:
+    - arr: Список положительных целых чисел, подлежащих сортировке.
+    Возвращает отсортированный массив.
+    """
+    # Проверка на корректность данных (только положительные целые числа)
+    if any(not isinstance(x, int) or x < 0 for x in arr):
+        raise ValueError("Все элементы массива должны быть положительными целыми числами.")
+
+    # Находим максимальную величину в массиве
+    max_num = max(arr)
+
+    # Формируем матрицу "бусин", где каждая строка представляет число из массива
+    beads_matrix = [[1 if j < val else 0 for j in range(max_num)] for val in arr]
+
+    # Проваливаем "бусины" вниз (каждый столбец должен быть выровнен снизу)
+    for col in range(len(beads_matrix[0])):
+        ones_in_col = sum(row[col] for row in beads_matrix)  # Считаем количество единиц в столбце
+        zeros_in_col = len(beads_matrix) - ones_in_col       # Считаем количество нулей
+        # Перестраиваем столбец, занося единицы вниз, а нули вверх
+        for i in range(zeros_in_col):
+            beads_matrix[i][col] = 0
+        for i in range(zeros_in_col, len(beads_matrix)):
+            beads_matrix[i][col] = 1
+
+    # Читаем высоты столбцов сверху вниз, получая отсортированный массив
+    sorted_arr = [sum(row) for row in zip(*beads_matrix)]
+
+    return sorted_arr
+
+# Пример использования
+array = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+sorted_array = bead_sort(array)
+print("Отсортированный массив:", sorted_array)
+
+Отсортированный массив: [11, 9, 8, 6, 5, 2, 1, 1, 1]
