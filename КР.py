@@ -220,3 +220,52 @@ if __name__ == "__main__":
         print(f"Элемент {target} не найден.")
 
 Элемент 55 найден на позиции 10.
+
+АЛГОРИТМ ТЕРНАРНОГО ПОИСКА
+def ternary_search(arr, target):
+    """
+    Реализация алгоритма тернарного поиска.
+    Алгоритм делит массив на три части и проводит поиск в соответствующей трети.
+    """
+    left = 0                                # Левая граница поиска
+    right = len(arr) - 1                    # Правая граница поиска
+
+    while left <= right:
+        # Определяем две средние точки
+        third_left = left + (right - left) // 3
+        third_right = right - (right - left) // 3
+
+        # Если элемент найден в третьей слева
+        if arr[third_left] == target:
+            return third_left
+
+        # Если элемент найден в третьей справа
+        if arr[third_right] == target:
+            return third_right
+
+        # Если искомый элемент меньше левой трети, сузим поиск слева
+        if target < arr[third_left]:
+            right = third_left - 1
+        # Если искомый элемент больше правой трети, сузим поиск справа
+        elif target > arr[third_right]:
+            left = third_right + 1
+        # Если элемент находится между третями, сузим поиск в центре
+        else:
+            left = third_left + 1
+            right = third_right - 1
+
+    # Если элемент не найден, возвращаем -1
+    return -1
+
+# Пример использования
+array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+target_value = 13
+
+result = ternary_search(array, target_value)
+
+if result != -1:
+    print(f"Элемент {target_value} найден на индексе {result}.")
+else:
+    print(f"Элемент {target_value} не найден.")
+
+Элемент 13 найден на индексе 6.
