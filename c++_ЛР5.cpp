@@ -11,7 +11,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-// Функция прямого обхода (preorder): корень → левый → правый
+// Функция прямого обхода (preorder): узел → левое поддерево → правое поддерево
 void preorder(TreeNode* root) {
     if (root != nullptr) {           // Если узел не нулевой
         cout << root->val << " ";  // Выводим значение узла
@@ -20,7 +20,7 @@ void preorder(TreeNode* root) {
     }
 }
 
-// Функция центрированного обхода (inorder): левый → корень → правый
+// Функция симметричного обхода (inorder): левое поддерево → узел → правое поддерево
 void inorder(TreeNode* root) {
     if (root != nullptr) {           // Если узел не нулевой
         inorder(root->left);        // Рекурсивно обходим левое поддерево
@@ -29,7 +29,7 @@ void inorder(TreeNode* root) {
     }
 }
 
-// Функция обратного обхода (postorder): левый → правый → корень
+// Функция обратного обхода (postorder): левое поддерево → правое поддерево → узел
 void postorder(TreeNode* root) {
     if (root != nullptr) {           // Если узел не нулевой
         postorder(root->left);      // Рекурсивно обходим левое поддерево
