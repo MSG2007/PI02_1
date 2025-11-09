@@ -6,21 +6,21 @@ class TreeNode:
         self.left = None        # Ссылка на левого потомка (изначально None)
         self.right = None       # Ссылка на правого потомка (изначально None)
 
-# Функция прямого обхода (preorder): корень → левый → правый
+# Функция прямого обхода (preorder): узел → левое поддерево → правое поддерево
 def preorder(root):
     if root is not None:                # Если узел существует (не None)
         print(root.val, end=' ')     # Выводим значение текущего узла
         preorder(root.left)          # Рекурсивно обходим левое поддерево
         preorder(root.right)         # Рекурсивно обходим правое поддерево
 
-# Функция центрированного обхода (inorder): левый → корень → правый
+# Функция симметричного обхода (inorder): левое поддерево → узел → правое поддерево
 def inorder(root):
     if root is not None:                # Если узел существует
         inorder(root.left)            # Рекурсивно обходим левое поддерево
         print(root.val, end=' ')     # Выводим значение текущего узла
         inorder(root.right)          # Рекурсивно обходим правое поддерево
 
-# Функция обратного обхода (postorder): левый → правый → корень
+# Функция обратного обхода (postorder): левое поддерево → правое поддерево → узел
 def postorder(root):
     if root is not None:                # Если узел существует
         postorder(root.left)         # Рекурсивно обходим левое поддерево
@@ -56,4 +56,3 @@ Inorder traversal:
 4 2 5 1 3 
 Postorder traversal:
 4 5 2 3 1 
-
