@@ -12,8 +12,6 @@ int main() {
 using namespace std;
 int main() {
     queue<string> q;
-
-    // Добавление элементов в очередь
     q.push("Первый");
     q.push("Второй");
     q.push("Третий");
@@ -44,15 +42,15 @@ int main() {
 #include <queue>
 #include <string>
 struct Task {
- std::string name;
- int priority;
- bool operator<(const Task& other) const {
- return priority < other.priority;
- }
+    std::string name;
+    int priority;
+    bool operator<(const Task& other) const {
+    return priority < other.priority;
+    }
 };
 int main() {
- std::priority_queue<Task> taskQueue;
- taskQueue.push({"Task 1", 2});
- taskQueue.push({"Task 2", 1});
- taskQueue.push({"Task 3", 3});
+    std::priority_queue<Task> taskQueue;
+    taskQueue.push({"Task 1", 2});
+    taskQueue.push({"Task 2", 1});
+    taskQueue.push({"Task 3", 3});
 }
